@@ -1,6 +1,6 @@
-const { Schema } = require("mongoose")
+const { Schema, default: mongoose } = require("mongoose")
 
-const ParkSchema = new Schema(
+const parkSchema = new Schema(
   {
     name: {
       type: String,
@@ -22,4 +22,4 @@ const ParkSchema = new Schema(
   { timestamps: true }
 )
 
-module.exports = ParkSchema
+module.exports = mongoose.model("Park", parkSchema)
