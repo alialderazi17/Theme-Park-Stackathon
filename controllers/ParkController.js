@@ -10,7 +10,7 @@ const getAllParks = async (req, res) => {
   }
 }
 
-const viewParkById = async (req, res) => {
+const showParkById = async (req, res) => {
   try {
     const park = await Park.findById(req.params.id)
     res.status(200).send(park)
@@ -21,5 +21,5 @@ const viewParkById = async (req, res) => {
 
 module.exports = {
   getAllParks,
-  viewParkById,
+  showParkById,
 }
