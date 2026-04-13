@@ -19,7 +19,23 @@ const viewParkById = async (req, res) => {
   }
 }
 
+const createPark = async (req, res) => {
+  try {
+    const newPark = await Park.create({
+      name: req.body.name,
+      image: req.body.image,
+      movie: req.body.movie,
+      description: req.body.description,
+    })
+
+    res.status(201).send(newPark)
+  } catch (error) {
+    console.error("⚠️ Error creating park!", error.message)
+  }
+}
+
 module.exports = {
   getAllParks,
   viewParkById,
+  createPark,
 }
