@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
+const parkRouter = require('./routes/parkRouter')
 
 const PORT = process.env.PORT || 3000
 
@@ -13,9 +14,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use('/themeparks', (req, res) => {
-  res.send(`Connected!`)
-})
+app.use('/themeparks', parkRouter)
 
 app.listen(PORT, () => {
   console.log(`Express server running on port ${PORT}`)
