@@ -12,7 +12,7 @@ const getAllParks = async (req, res) => {
 
 const viewParkById = async (req, res) => {
   try {
-    const park = await Park.findById({})
+    const park = await Park.findById(req.params.id)
     res.status(200).send(park)
   } catch (error) {
     console.error("⚠️ An Error occurred viewing Park!", error.message)
