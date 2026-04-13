@@ -19,7 +19,33 @@ const viewParkById = async (req, res) => {
   }
 }
 
+const createPark = async (req, res) => {
+  try {
+    const newPark = await Park.create({
+      name: req.body.name,
+      image: req.body.image,
+      movie: req.body.movie,
+      description: req.body.description,
+    })
+
+    res.status(201).send(newPark)
+  } catch (error) {
+    console.error("⚠️ Error creating park!", error.message)
+  }
+}
+
+const deletePark = async (req, res) => {
+  try {
+    await Park.findByIdAndDelete(req.params.id)
+    res.status(200).send({ message: "Park deleted successfully" })
+  } catch (error) {
+    console.error("⚠️ Error deleting park!", error.message)
+  }
+}
+
 module.exports = {
   getAllParks,
   viewParkById,
+  createPark,
+  deletePark,
 }
