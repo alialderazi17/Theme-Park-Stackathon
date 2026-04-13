@@ -34,8 +34,18 @@ const createPark = async (req, res) => {
   }
 }
 
+const deletePark = async (req, res) => {
+  try {
+    await Park.findByIdAndDelete(req.params.id)
+    res.status(200).send({ message: "Park deleted successfully" })
+  } catch (error) {
+    console.error("⚠️ Error deleting park!", error.message)
+  }
+}
+
 module.exports = {
   getAllParks,
   viewParkById,
   createPark,
+  deletePark,
 }
