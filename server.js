@@ -13,8 +13,6 @@ app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-app.use("/park", parkRouter)
-
 app.use("/themeparks", parkRouter)
 
 app.listen(PORT, () => {
