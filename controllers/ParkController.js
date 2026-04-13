@@ -1,4 +1,4 @@
-const { Park } = require("../models")
+const { Park } = require("../models/Park")
 
 const getAllParks = async (req, res) => {
   try {
@@ -21,12 +21,7 @@ const showParkById = async (req, res) => {
 
 const createPark = async (req, res) => {
   try {
-    const newPark = await Park.create({
-      name: req.body.name,
-      image: req.body.image,
-      movie: req.body.movie,
-      description: req.body.description,
-    })
+    const newPark = await Park.create(req.body)
 
     res.status(201).send(newPark)
   } catch (error) {
