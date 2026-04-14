@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use("/themeparks", parkRouter)
 
+app.get("/", (req, res) => {
+  res.send("Server's Running!")
+})
+
 app.listen(PORT, () => {
   console.log(`Express server running on port ${PORT}`)
 })
